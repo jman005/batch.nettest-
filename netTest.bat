@@ -21,6 +21,9 @@ rem
 rem ping most common gateway IPs (192.168.1.1, 192.168.0.1, and 10.0.0.1)
 SET FLAG_PINGG=on
 rem
+rem ping localhost
+SET FLAG_PINGL=on
+rem
 rem ping ip (8.8.8.8)
 SET FLAG_PINGI=on
 rem
@@ -50,7 +53,7 @@ IF EXIST %FILE% goto abort-file
 rem
 rem Header, contains tool version, free software notice, and Datestamp.
 rem
-ECHO =============Scath's Network Scanner v0.1============== > %FILE%
+ECHO =============Scath's Network Scanner v0.1.1============== > %FILE%
 ECHO "This is a FREE TOOL. If you purchased this from anywhere, try to get a refund!" >> %FILE%
 ECHO =============Date: %date%=================== >> %FILE%
 rem
@@ -61,9 +64,15 @@ IF /I "%FLAG_IPC%" EQU "on" (
 	ECHO ===============IPCONFIG================= >> %FILE%
 	ipconfig /all >> %FILE%
 )
+IF /I "%FLAG_PINGL%" EQU "on" (
+	echo testing ping capability, please wait... >> %FILE%
+	ECHO =============PING LOCALHOST============= >> %FILE%
+	ping -n 5 127.0.0.1 >> %FILE%
+)
 IF /I "%FLAG_PINGG%" EQU "on" (
 	echo "testing gateway connection, Please Wait..."
 	ECHO ==============PING GATE================= >> %FILE%
+	ping -n 5 192.168.2.1 >> %FILE%
 	ping -n 5 192.168.1.1 >> %FILE%
 	ping -n 5 192.168.0.1 >> %FILE%
 	ping -n 5 10.0.0.1 >> %FILE%
