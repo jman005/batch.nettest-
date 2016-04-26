@@ -1,5 +1,5 @@
 @echo OFF
-rem Scath's Net Inspection Script, (c) 2106
+rem Scath's Net Inspection Script, (c) 2016
 rem
 rem This script should be considered released into the Public Domain, however I would appreciate a rem thank you or a tip @ the bitcoin address 1FqukbmrZf2EnnKYf3BkioWTYysqnynFWy :)
 rem 
